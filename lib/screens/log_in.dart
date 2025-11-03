@@ -2,7 +2,6 @@ import 'package:bank_app/core/constants/constant.dart';
 import 'package:bank_app/core/extensions/num_extension.dart';
 import 'package:bank_app/core/extensions/theme_extensions.dart';
 import 'package:bank_app/provider/auth_provider.dart';
-import 'package:bank_app/screens/widgets/app_textfield.dart';
 import 'package:bank_app/screens/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

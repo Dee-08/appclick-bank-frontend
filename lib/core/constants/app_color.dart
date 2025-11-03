@@ -22,3 +22,4 @@ class AppColor {
     return context.isDark ? white : primary;
   }
 }
+ 

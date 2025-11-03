@@ -13,6 +13,7 @@ class AppButtons extends StatelessWidget {
     required this.text,
     this.backgroundColor = AppColor.blue,
     this.textColor = AppColor.white,
+    TextStyle? style,
   });
 
   @override

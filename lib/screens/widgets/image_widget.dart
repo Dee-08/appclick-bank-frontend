@@ -15,7 +15,7 @@ class ImageWidget extends StatelessWidget {
   final ImageRepeat repeat = ImageRepeat.noRepeat;
   final Rect? centerSlice;
 
-  const ImageWidget({
+  const ImageWidget( {
     super.key,
     required this.imagePath,
     this.scale,
