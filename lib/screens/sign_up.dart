@@ -140,7 +140,22 @@ class SignUp extends StatelessWidget {
                     ),
                   ),
                   30.getHeightWhiteSpacing,
-                  AppButtons(onPressed: () {}, text: "Sign Up"),
+                  Consumer<AuthProvider>(
+                    builder: (context, authProvider, _) {
+                      return authProvider.isLoading
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                color: AppColor.blue,
+                              ),
+                            )
+                          : AppButtons(
+                              onPressed: () {
+                                context.read<AuthProvider>().register(context);
+                              },
+                              text: "Sign Up",
+                            );
+                    },
+                  ),
                   20.getHeightWhiteSpacing,
                   SizedBox(
                     width: context.screenSize.width,
@@ -156,7 +171,7 @@ class SignUp extends StatelessWidget {
                             Navigator.pushNamed(context, "login");
                           },
                           child: Text(
-                            "Sign Up",
+                            "Sign In",
                             style: context.textTheme.bodySmall?.copyWith(
                               color: AppColor.blue,
                             ),

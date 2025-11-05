@@ -98,7 +98,22 @@ class LogIn extends StatelessWidget {
                     ),
                   ),
                   30.getHeightWhiteSpacing,
-                  AppButtons(onPressed: () {}, text: "Sign In"),
+                  Consumer<AuthProvider>(
+                    builder: (context, authProvider, _) {
+                      return authProvider.isLoading
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                color: AppColor.textColor(context),
+                              ),
+                            )
+                          : AppButtons(
+                              onPressed: () {
+                                context.read<AuthProvider>().login(context);
+                              },
+                              text: "Sign In",
+                            );
+                    },
+                  ),
                   15.getHeightWhiteSpacing,
                   SizedBox(
                     width: context.screenSize.width,
