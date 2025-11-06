@@ -61,11 +61,12 @@ class AuthProvider extends ChangeNotifier {
           isLoading = false;
           notifyListeners();
           if (res.isSuccess) {
-            await SecureStorage.deleteStoredLogin();
-            await SecureStorage.deleteStoredTime();
+            DateTime now = DateTime.now();
+            await SecureStorage.storeLogin("true");
+            await SecureStorage.storeTime(now.toIso8601String());
+            isLoggedIn = true;
+            lastLoginTime = now;
 
-            isLoggedIn = false;
-            lastLoginTime = null;
             notifyListeners();
             if (context.mounted) {
               Navigator.pushNamed(context, "home");

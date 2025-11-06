@@ -10,4 +10,5 @@ class AppImages {
   static const String lock = "${_imagePath}Lock.png";
   static const String user = "${_imagePath}User.png";
   static const String phone = "${_imagePath}Phone.png";
+  static const String profile = "${_imagePath}profile.jpg";
 }

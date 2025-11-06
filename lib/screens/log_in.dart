@@ -6,12 +6,18 @@ import 'package:bank_app/screens/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LogIn extends StatelessWidget {
+class LogIn extends StatefulWidget {
   const LogIn({super.key});
 
   @override
+  State<LogIn> createState() => _LogInState();
+}
+
+class _LogInState extends State<LogIn> {
+  final formKey = GlobalKey<FormState>();
+
+  @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
     var authProvider = context.read<AuthProvider>();
     return Scaffold(
       body: Padding(
@@ -99,21 +105,20 @@ class LogIn extends StatelessWidget {
                   ),
                   30.getHeightWhiteSpacing,
                   Consumer<AuthProvider>(
-                    builder: (context, authProvider, _) {
-                      return authProvider.isLoading
-                          ? Center(
-                              child: CircularProgressIndicator(
-                                color: AppColor.textColor(context),
-                              ),
-                            )
+                    builder: (context, auth, _) {
+                      return auth.isLoading
+                          ? Center(child: CircularProgressIndicator())
                           : AppButtons(
-                              onPressed: () {
-                                context.read<AuthProvider>().login(context);
-                              },
                               text: "Sign In",
+                              onPressed: () {
+                                if (formKey.currentState!.validate()) {
+                                  auth.login(context);
+                                }
+                              },
                             );
                     },
                   ),
+
                   15.getHeightWhiteSpacing,
                   SizedBox(
                     width: context.screenSize.width,

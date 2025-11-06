@@ -1,81 +1,48 @@
 import 'package:bank_app/core/constants/constant.dart';
-import 'package:bank_app/screens/widgets/image_widget.dart';
+import 'package:bank_app/provider/home_provider.dart';
+import 'package:bank_app/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class Home extends StatelessWidget {
+  const Home({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final homeProvider = Provider.of<HomeProvider>(context);
+
+    final screens = [HomeScreen(), Cards(), Statistics(), Settings()];
     return Scaffold(
-      backgroundColor: AppColor.primary,
+      body: screens[homeProvider.currentIndex],
 
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-        child: Column(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                  },
-                  child: CircleAvatar(
-                    radius: 30,
-                    backgroundColor: AppColor.grey,
-                    child: Icon(
-                      Icons.person,
-                      color: AppColor.white,
-                      size: 30,
-                    ),
-                  ),
-                ),
-
-                const SizedBox(width: 12), 
-
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Welcome back",
-                      style: TextStyle(
-                        color: AppColor.darkGrey,
-                        fontSize: 14,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      "Tanya\nMyroniuk",
-                      style: TextStyle(
-                        color: AppColor.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        height: 1.05,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 30),
-
-            ImageWidget(imagePath: AppImages.card),
-          ],
-          
-
-
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: AppColor.navColor(context),
+        selectedItemColor: AppColor.blue,
+        unselectedItemColor: AppColor.iconColor,
+        currentIndex: homeProvider.currentIndex,
+        onTap: (value) {
+          homeProvider.changeIndex(value);
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(IconsaxPlusBold.home_1),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(IconsaxPlusBold.wallet_2),
+            label: "My Cards",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(IconsaxPlusBold.chart_square),
+            label: "Statistics",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(IconsaxPlusBold.setting_2),
+            label: "Settings",
+          ),
+        ],
       ),
     );
   }
