@@ -13,6 +13,7 @@ class AppColor {
   static const Color iconColor = Color(0xff8B8B94);
   static const Color darkNav = Color(0xff27273A);
   static const Color cardInner = Color(0xffE7E7E9);
+  static const Color iconButtonIconColor = Color(0xff1E1E2D);
 
   static Color getSplashColor(BuildContext context) {
     return context.isDark ? primary : white;
