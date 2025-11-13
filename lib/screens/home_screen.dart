@@ -1,8 +1,9 @@
 import 'package:bank_app/core/constants/constant.dart';
 import 'package:bank_app/core/extensions/num_extension.dart';
 import 'package:bank_app/core/extensions/theme_extensions.dart';
-import 'package:bank_app/screens/widgets/widget.dart';
+import 'package:bank_app/screens/widgets/image_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -98,27 +99,154 @@ class HomeScreen extends StatelessWidget {
               height: context.screenSize.height * 0.25,
               width: context.screenSize.width,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(20),
+                color: AppColor.card,
+                image: DecorationImage(
+                  image: AssetImage('assets/images/worldMap.png'),
+                  fit: BoxFit.cover,
+                  opacity: 0.12,
+                ),
               ),
               child: Stack(
                 children: [
-                  Container(
-                    width: context.screenSize.width,
-                    height: context.screenSize.height,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/worldMap.png'),
-                        fit: BoxFit.cover,
-                        colorFilter: ColorFilter.mode(
-                          AppColor.primary.withValues(alpha: 0.4),
-                          BlendMode.darken,
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ImageWidget(imagePath: AppImages.data),
+                            Icon(
+                              IconsaxPlusBold.wifi,
+                              color: AppColor.cardInner,
+                            ),
+                          ],
                         ),
-                      ),
+                        20.getHeightWhiteSpacing,
+                        Text(
+                          "4562  1122  4595  7852",
+                          style: context.textTheme.bodyLarge?.copyWith(
+                            color: AppColor.white,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        15.getHeightWhiteSpacing,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "AR Jonson",
+                                  style: context.textTheme.bodySmall?.copyWith(
+                                    color: AppColor.white,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                8.getHeightWhiteSpacing,
+                                Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Expiry Date",
+                                          style: context.textTheme.bodySmall
+                                              ?.copyWith(
+                                                fontSize: 12,
+                                                color: AppColor.white,
+                                              ),
+                                        ),
+                                        8.getHeightWhiteSpacing,
+                                        Text(
+                                          "24/2000",
+                                          style: context.textTheme.bodySmall
+                                              ?.copyWith(
+                                                fontSize: 14,
+                                                color: AppColor.white,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                    20.getWidthWhiteSpacing,
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "CVV",
+                                          style: context.textTheme.bodySmall
+                                              ?.copyWith(
+                                                fontSize: 12,
+                                                color: AppColor.white,
+                                              ),
+                                        ),
+                                        8.getHeightWhiteSpacing,
+                                        Text(
+                                          "6886",
+                                          style: context.textTheme.bodySmall
+                                              ?.copyWith(
+                                                fontSize: 14,
+                                                color: AppColor.white,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 32,
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFFE53E3E),
+                                        shape: BoxShape.circle,
+                                      ),
+                                    ),
+
+                                    Transform.translate(
+                                      offset: Offset(-10, 0),
+                                      child: Container(
+                                        width: 32,
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFF6C042),
+                                          shape: BoxShape.circle,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                15.getHeightWhiteSpacing,
+                                Text(
+                                  "Mastercard",
+                                  style: context.textTheme.bodySmall?.copyWith(
+                                    color: AppColor.white,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
+            20.getHeightWhiteSpacing,
           ],
         ),
       ),

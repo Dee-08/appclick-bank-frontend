@@ -18,7 +18,7 @@ class BankAppRoot extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: AppRouter().route,
-      initialRoute: "splash",
+      initialRoute: "home",
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: Provider.of<ThemeProvider>(context).themeMode,
