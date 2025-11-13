@@ -37,34 +37,43 @@ class HomeScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(100),
                               image: DecorationImage(
                                 image: AssetImage("assets/images/profile.jpg"),
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
                         ),
                         10.getWidthWhiteSpacing,
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              child: Text(
-                                "Welcome Back",
-                                textAlign: TextAlign.start,
-                                style: context.textTheme.titleSmall?.copyWith(
-                                  color: AppColor.grey,
+                        SizedBox(
+                          width: 195,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: context.screenSize.width,
+                                child: Text(
+                                  "Welcome Back,",
+                                  textAlign: TextAlign.start,
+                                  style: context.textTheme.titleSmall?.copyWith(
+                                    color: AppColor.grey,
 
-                                  fontWeight: FontWeight.w400,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              "Tanya Monruk",
-                              style: context.textTheme.bodyMedium?.copyWith(
-                                color: AppColor.textColor(context),
-                                fontSize: 22,
-                                fontWeight: FontWeight.w500,
+                              SizedBox(
+                                width: context.screenSize.width,
+                                child: Text(
+                                  "Tanya Monruk",
+                                  textAlign: TextAlign.start,
+                                  style: context.textTheme.bodyMedium?.copyWith(
+                                    color: AppColor.textColor(context),
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -85,7 +94,31 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             30.getHeightWhiteSpacing,
-            Container(height: 199, color: Colors.red),
+            Container(
+              height: context.screenSize.height * 0.25,
+              width: context.screenSize.width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Stack(
+                children: [
+                  Container(
+                    width: context.screenSize.width,
+                    height: context.screenSize.height,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/worldMap.png'),
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(
+                          AppColor.primary.withValues(alpha: 0.4),
+                          BlendMode.darken,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

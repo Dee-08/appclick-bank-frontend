@@ -1,7 +1,5 @@
 import 'package:bank_app/core/constants/app_images.dart';
-import 'package:bank_app/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class OnboardingProvider extends ChangeNotifier {
   final PageController pageController = PageController();
@@ -37,7 +35,6 @@ class OnboardingProvider extends ChangeNotifier {
         curve: Curves.easeInOut,
       );
     } else {
-      Provider.of<AuthProvider>(context, listen: false).seenOnboarding();
       Navigator.pushNamed(context, "login");
     }
   }

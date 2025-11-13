@@ -12,9 +12,7 @@ class Splash extends StatelessWidget {
   Widget build(BuildContext context) {
     var auth = Provider.of<AuthProvider>(context);
     Future.delayed(Duration(seconds: 3), () {
-      if (!auth.hasSeenOnboarding) {
-        Navigator.pushNamed(context, "onboarding");
-      } else if (!auth.isLoggedIn) {
+      if (!auth.isLoggedIn) {
         Navigator.pushNamed(context, "login");
       } else {
         Navigator.pushNamed(context, "home");

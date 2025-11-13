@@ -1,7 +1,6 @@
 import 'package:bank_app/core/constants/constant.dart';
 import 'package:bank_app/core/databases/secure_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider extends ChangeNotifier {
   TextEditingController nameController = TextEditingController();
@@ -10,16 +9,12 @@ class AuthProvider extends ChangeNotifier {
   TextEditingController passwordController = TextEditingController();
 
   bool isLoading = false;
-  bool hasSeenOnboarding = false;
   bool isLoggedIn = false;
   DateTime? lastLoginTime;
 
   void initAuth() async {
     var loginStatus = await SecureStorage.getStoredLogin();
     var timeLoggedIn = await SecureStorage.getStoredTime();
-
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    hasSeenOnboarding = prefs.getBool("hasSeenOnboarding") ?? false;
 
     if (loginStatus == "true") {
       isLoggedIn = true;
@@ -35,13 +30,6 @@ class AuthProvider extends ChangeNotifier {
         }
       }
     }
-    notifyListeners();
-  }
-
-  void seenOnboarding() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool("hasSeenOnboarding", true);
-    hasSeenOnboarding = true;
     notifyListeners();
   }
 
