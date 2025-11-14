@@ -17,9 +17,11 @@ class ThemeModeSwitch extends StatelessWidget {
         ).changeMode(!context.isDark);
       },
       child: Container(
+        width: 42,
+        height: 42,
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          shape: BoxShape.circle,
           border: Border.all(),
           color: AppColor.primary,
         ),
