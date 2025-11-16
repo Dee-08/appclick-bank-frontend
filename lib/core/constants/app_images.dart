@@ -18,4 +18,5 @@ class AppImages {
   static const String inbound = "${_imagePath}inbound.png";
   static const String spotify = "${_imagePath}spotify.png";
   static const String ios = "${_imagePath}ios.png";
+  static const String netflix = "${_imagePath}netflix.png";
 }
