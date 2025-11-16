@@ -1,24 +1,31 @@
 import 'package:bank_app/core/constants/app_color.dart';
 import 'package:bank_app/core/constants/app_images.dart';
+import 'package:bank_app/core/constants/constant.dart';
 import 'package:bank_app/core/extensions/extensions.dart';
-import 'package:bank_app/screens/widgets/image_widget.dart' show ImageWidget;
+import 'package:bank_app/screens/widgets/image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 
-class Cards extends StatelessWidget {
-  const Cards({super.key});
+class Sendmoney extends StatefulWidget {
+  const Sendmoney({super.key});
 
+  @override
+  State<Sendmoney> createState() => _SendmoneyState();
+}
+
+class _SendmoneyState extends State<Sendmoney> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.getSplashColor(context),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            50.getHeightWhiteSpacing,
+            30.getHeightWhiteSpacing,
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -29,40 +36,29 @@ class Cards extends StatelessWidget {
                     color: AppColor.lightGrey,
                     borderRadius: BorderRadius.circular(100),
                   ),
-                  child: Center(
-                    child: Row(
-                      children: [
-                        15.getWidthWhiteSpacing,
-                        Icon(
-                          Icons.arrow_back_ios,
-                          size: 18,
-                          color: AppColor.textColor(context),
-                        ),
-                      ],
+                  child: Row(
+                    children: [
+                      15.getWidthWhiteSpacing,
+
+                      Icon(
+                        Icons.arrow_back_ios,
+                        size: 18,
+                        color: AppColor.textColor(context),
+                      ),
+                    ],
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    "Send Money",
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      color: AppColor.textColor(context),
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
-                Text(
-                  "My Cards",
-                  textAlign: TextAlign.start,
-                  style: context.textTheme.bodyMedium?.copyWith(
-                    color: AppColor.textColor(context),
-                    fontSize: 22,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                Container(
-                  width: 42,
-                  height: 42,
-                  decoration: BoxDecoration(
-                    color: AppColor.lightGrey,
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  child: Icon(
-                    IconsaxPlusLinear.add,
-                    color: AppColor.textColor(context),
-                  ),
-                ),
+                SizedBox(),
               ],
             ),
             40.getHeightWhiteSpacing,
@@ -217,116 +213,160 @@ class Cards extends StatelessWidget {
                 ],
               ),
             ),
-            Spacer(),
-            Text(
-              "Monthly spending limit",
-              textAlign: TextAlign.start,
-              style: context.textTheme.bodyMedium?.copyWith(
-                color: AppColor.textColor(context),
-                fontSize: 19,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            15.getHeightWhiteSpacing,
+            30.getHeightWhiteSpacing,
             Container(
-              width: double.infinity,
               decoration: BoxDecoration(
-                color: Color(0xFFF4F4F4),
-
+                border: Border.all(color: Colors.blue),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                  top: 20,
-                  bottom: 20,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Amount: \$8,545.00",
-                      textAlign: TextAlign.start,
-                      style: context.textTheme.bodySmall?.copyWith(
-                        color: AppColor.textColor(context),
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 15,
+                      left: 10,
+                      right: 10,
                     ),
-                    15.getHeightWhiteSpacing,
-                    Row(
+                    child: Column(
                       children: [
-                        Container(
-                          height: 8,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(10),
+                        Text(
+                          "Send to",
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: AppColor.textColor(context),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
+                        15.getHeightWhiteSpacing,
                         Container(
-                          height: 17,
-                          width: 20,
                           decoration: BoxDecoration(
-                            color: Colors.blue,
                             shape: BoxShape.circle,
+                            border: Border.all(color: Colors.blue),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              height: 10,
-                              width: 10,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            height: 8,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.add,
+                              color: Colors.blue,
+                              size: 20,
                             ),
                           ),
                         ),
                       ],
                     ),
-                    10.getHeightWhiteSpacing,
-                    Row(
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 15,
+                      left: 5,
+                      right: 5,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          "\$0",
-                          textAlign: TextAlign.start,
-                          style: context.textTheme.bodySmall?.copyWith(
-                            color: Colors.grey,
-                            fontSize: 15,
+                          "Add",
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: AppColor.textColor(context),
+                            fontSize: 12,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        68.getWidthWhiteSpacing,
-
                         Text(
-                          "\$4,600",
-                          textAlign: TextAlign.start,
-                          style: context.textTheme.bodySmall?.copyWith(
+                          "Yamilet",
+                          style: context.textTheme.bodyMedium?.copyWith(
                             color: AppColor.textColor(context),
-                            fontSize: 15,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          "Alexa",
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: AppColor.textColor(context),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          "Yakub",
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: AppColor.textColor(context),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          "Krishna",
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: AppColor.textColor(context),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            30.getHeightWhiteSpacing,
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blue),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 20,
+                  bottom: 20,
+                  left: 15,
+                  right: 15,
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Enter your Amount",
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: Colors.blue,
+                            fontSize: 12,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         Spacer(),
                         Text(
-                          "\$10,000",
-                          textAlign: TextAlign.start,
-                          style: context.textTheme.bodySmall?.copyWith(
-                            color: Colors.grey,
-                            fontSize: 15,
+                          "EChange currency?",
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: Colors.red,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    20.getHeightWhiteSpacing,
+                    Row(
+                      children: [
+                        Text(
+                          "USD",
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: Colors.blue,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        20.getWidthWhiteSpacing,
+                        Text(
+                          "36.00",
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: Colors.black,
+                            fontSize: 25,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -336,7 +376,8 @@ class Cards extends StatelessWidget {
                 ),
               ),
             ),
-            20.getHeightWhiteSpacing,
+            Spacer(),
+            AppButtons(onPressed: () {}, text: "Send Money"),
           ],
         ),
       ),

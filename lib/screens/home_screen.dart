@@ -1,45 +1,15 @@
 import 'package:bank_app/core/constants/constant.dart';
 import 'package:bank_app/core/extensions/num_extension.dart';
 import 'package:bank_app/core/extensions/theme_extensions.dart';
-import 'package:bank_app/provider/stock_selection_provider.dart';
 import 'package:bank_app/screens/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final stockProvider = context.watch<StockSelectionProvider>();
-
-    final transactions = [
-      {
-        "header": "Apple Store",
-        "sub": "Entertainment",
-        "image": AppImages.ios,
-        "amount": "- \$5.99",
-      },
-      {
-        "header": "Spotify",
-        "sub": "music",
-        "image": AppImages.spotify,
-        "amount": "- \$12.99",
-      },
-      {
-        "header": "Money Transfer",
-        "sub": "Transaction",
-        "image": AppImages.inbound,
-        "amount": "\$300",
-      },
-      {
-        "header": "Grocery",
-        "sub": "Purchase",
-        "image": AppImages.grocery,
-        "amount": "- \$88",
-      },
-    ];
     return Scaffold(
       backgroundColor: AppColor.getSplashColor(context),
 
@@ -114,7 +84,6 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-
                     Container(
                       width: 42,
                       height: 42,
@@ -122,10 +91,11 @@ class HomeScreen extends StatelessWidget {
                         color: AppColor.lightGrey,
                         borderRadius: BorderRadius.circular(100),
                       ),
-                      child: Icon(Icons.search, color: AppColor.primary),
+                      child: Icon(
+                        Icons.search,
+                        color: AppColor.textColor(context),
+                      ),
                     ),
-                    5.getWidthWhiteSpacing,
-                    ThemeModeSwitch(),
                   ],
                 ),
               ),
@@ -179,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                                     "AR Jonson",
                                     style: context.textTheme.bodySmall
                                         ?.copyWith(
-                                          color: AppColor.textColor(context),
+                                          color: AppColor.white,
                                           fontSize: 16,
                                         ),
                                   ),
@@ -290,7 +260,9 @@ class HomeScreen extends StatelessWidget {
                   AppIconButton(
                     label: "Send",
                     icon: IconsaxPlusLinear.arrow_up,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, "sendmoney");
+                    },
                   ),
                   AppIconButton(
                     label: "Receive",
@@ -309,42 +281,25 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              30.getHeightWhiteSpacing,
+              15.getHeightWhiteSpacing,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "Transaction",
                     style: context.textTheme.titleMedium?.copyWith(
-                      color: AppColor.textColor(context),
+                      color: AppColor.primary,
                       fontSize: 18,
                     ),
                   ),
                   Text(
-                    "See All",
+                    "Sell All",
                     style: context.textTheme.titleMedium?.copyWith(
                       color: AppColor.blue,
                       fontSize: 18,
                     ),
                   ),
                 ],
-              ),
-              15.getHeightWhiteSpacing,
-              Column(
-                children: List.generate(transactions.length, (index) {
-                  final transaction = transactions[index];
-
-                  return Stocks(
-                    imagePath: transaction["image"]!,
-                    header: transaction["header"]!,
-                    subHeader: transaction["sub"]!,
-                    amount: transaction["amount"]!,
-                    isSelected: stockProvider.selectedIndex == index,
-                    onTap: () {
-                      stockProvider.selectIndex(index);
-                    },
-                  );
-                }),
               ),
             ],
           ),

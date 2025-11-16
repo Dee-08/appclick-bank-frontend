@@ -13,6 +13,5 @@ class AppProvider {
     ChangeNotifierProvider(create: (_) => AuthProvider()),
     ChangeNotifierProvider(create: (_) => HomeProvider()),
     ChangeNotifierProvider(create: (_) => SettingsProvider()),
-    ChangeNotifierProvider(create: (_) => StockSelectionProvider()),
   ];
 }
