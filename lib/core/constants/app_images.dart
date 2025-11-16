@@ -14,5 +14,4 @@ class AppImages {
   static const String data = "${_imagePath}dataSide.png";
   static const String master = "${_imagePath}masterCard.png";
   static const String profile = "${_imagePath}profile.jpg";
-  static const String graph1 = "${_imagePath}graphh.png";
 }

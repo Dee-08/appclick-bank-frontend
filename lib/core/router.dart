@@ -11,6 +11,5 @@ class AppRouter {
     "login": (BuildContext context) => LogIn(),
     "onboarding": (BuildContext context) => Onboarding(),
     "signup": (BuildContext context) => SignUp(),
-    "sendmoney": (BuildContext context) => Sendmoney(),
   };
 }
