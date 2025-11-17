@@ -41,7 +41,9 @@ class AppIconButton extends StatelessWidget {
           8.getHeightWhiteSpacing,
           Text(
             label,
-            style: context.textTheme.bodySmall?.copyWith(color: labelColor),
+            style: context.textTheme.bodySmall?.copyWith(
+              color: AppColor.textColor(context),
+            ),
           ),
         ],
       ),
