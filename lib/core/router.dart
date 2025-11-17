@@ -1,6 +1,7 @@
+import 'package:bank_app/screens/receive.dart';
 import 'package:bank_app/screens/screens.dart';
 import 'package:bank_app/screens/home.dart';
-import 'package:bank_app/screens/sendmoney.dart';
+import 'package:bank_app/screens/send.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -11,5 +12,7 @@ class AppRouter {
     "login": (BuildContext context) => LogIn(),
     "onboarding": (BuildContext context) => Onboarding(),
     "signup": (BuildContext context) => SignUp(),
+    "send": (BuildContext context) => Send(),
+    "receive": (BuildContext context) => Receive(),
   };
 }

@@ -291,13 +291,15 @@ class HomeScreen extends StatelessWidget {
                     label: "Send",
                     icon: IconsaxPlusLinear.arrow_up,
                     onPressed: () {
-                      Navigator.pushNamed(context, "sendmoney");
+                      Navigator.pushNamed(context, "send");
                     },
                   ),
                   AppIconButton(
                     label: "Receive",
                     icon: IconsaxPlusLinear.arrow_down_1,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, "receive");
+                    },
                   ),
                   AppIconButton(
                     label: "Loan",

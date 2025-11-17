@@ -6,14 +6,14 @@ import 'package:bank_app/screens/widgets/image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 
-class Sendmoney extends StatefulWidget {
-  const Sendmoney({super.key});
+class Send extends StatefulWidget {
+  const Send({super.key});
 
   @override
-  State<Sendmoney> createState() => _SendmoneyState();
+  State<Send> createState() => _SendState();
 }
 
-class _SendmoneyState extends State<Sendmoney> {
+class _SendState extends State<Send> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,23 +29,26 @@ class _SendmoneyState extends State<Sendmoney> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 42,
-                  height: 42,
-                  decoration: BoxDecoration(
-                    color: AppColor.lightGrey,
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  child: Row(
-                    children: [
-                      15.getWidthWhiteSpacing,
+                GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: Container(
+                    width: 42,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      color: AppColor.lightGrey,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Row(
+                      children: [
+                        15.getWidthWhiteSpacing,
 
-                      Icon(
-                        Icons.arrow_back_ios,
-                        size: 18,
-                        color: AppColor.textColor(context),
-                      ),
-                    ],
+                        Icon(
+                          Icons.arrow_back_ios,
+                          size: 18,
+                          color: AppColor.textColor(context),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Center(

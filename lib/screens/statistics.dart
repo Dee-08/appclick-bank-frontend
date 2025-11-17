@@ -1,7 +1,10 @@
 import 'package:bank_app/core/constants/app_color.dart';
-import 'package:bank_app/core/constants/app_images.dart';
+
 import 'package:bank_app/core/extensions/extensions.dart';
+import 'package:bank_app/provider/stock_selection_provider.dart';
 import 'package:bank_app/provider/tabbar_provider.dart';
+import 'package:bank_app/provider/transaction_provider.dart';
+import 'package:bank_app/screens/widgets/stocks.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +29,8 @@ class _StatisticsState extends State<Statistics>
   @override
   Widget build(BuildContext context) {
     final tabProvider = Provider.of<TabbarProvider>(context);
+    final stockProvider = context.watch<StockSelectionProvider>();
+    final transactions = TransactionsData.transactions;
 
     return Scaffold(
       backgroundColor: AppColor.getSplashColor(context),
@@ -40,23 +45,25 @@ class _StatisticsState extends State<Statistics>
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 42,
-                  height: 42,
-                  decoration: BoxDecoration(
-                    color: AppColor.lightGrey,
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  child: Row(
-                    children: [
-                      15.getWidthWhiteSpacing,
+                GestureDetector(
+                  child: Container(
+                    width: 42,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      color: AppColor.lightGrey,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Row(
+                      children: [
+                        15.getWidthWhiteSpacing,
 
-                      Icon(
-                        Icons.arrow_back_ios,
-                        size: 18,
-                        color: AppColor.textColor(context),
-                      ),
-                    ],
+                        Icon(
+                          Icons.arrow_back_ios,
+                          size: 18,
+                          color: AppColor.textColor(context),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Text(
@@ -147,6 +154,43 @@ class _StatisticsState extends State<Statistics>
                   }),
                 ),
               ),
+            ),
+            30.getHeightWhiteSpacing,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Transaction",
+                  style: context.textTheme.titleMedium?.copyWith(
+                    color: AppColor.textColor(context),
+                    fontSize: 18,
+                  ),
+                ),
+                Text(
+                  "See All",
+                  style: context.textTheme.titleMedium?.copyWith(
+                    color: AppColor.blue,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+            15.getHeightWhiteSpacing,
+            Column(
+              children: List.generate(transactions.length, (index) {
+                final transaction = transactions[index];
+
+                return Stocks(
+                  imagePath: transaction["image"]!,
+                  header: transaction["header"]!,
+                  subHeader: transaction["sub"]!,
+                  amount: transaction["amount"]!,
+                  isSelected: stockProvider.selectedIndex == index,
+                  onTap: () {
+                    stockProvider.selectIndex(index);
+                  },
+                );
+              }),
             ),
           ],
         ),
