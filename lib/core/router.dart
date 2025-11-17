@@ -1,5 +1,6 @@
 import 'package:bank_app/screens/screens.dart';
 import 'package:bank_app/screens/home.dart';
+import 'package:bank_app/screens/profile_settings.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -11,5 +12,6 @@ class AppRouter {
     "onboarding": (BuildContext context) => Onboarding(),
     "signup": (BuildContext context) => SignUp(),
     "settings": (BuildContext context) => Settings(),
+    "profile": (BuildContext context) => ProfileSettings(),
   };
 }

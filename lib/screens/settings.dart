@@ -2,6 +2,8 @@ import 'package:bank_app/core/constants/app_color.dart';
 import 'package:bank_app/core/extensions/num_extension.dart';
 import 'package:bank_app/core/extensions/theme_extensions.dart';
 import 'package:bank_app/provider/settings_provider.dart';
+import 'package:bank_app/screens/log_in.dart';
+import 'package:bank_app/screens/profile_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -53,7 +55,15 @@ class Settings extends StatelessWidget {
                     color: const Color(0xffF4F4F4),
                     borderRadius: BorderRadius.circular(100),
                   ),
-                  child: Icon(Icons.logout_rounded, color: AppColor.dark),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LogIn()),
+                      );
+                    },
+                    child: Icon(Icons.logout_rounded, color: AppColor.dark),
+                  ),
                 ),
               ],
             ),
@@ -107,10 +117,20 @@ class Settings extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 15),
-                Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: 24,
-                  color: AppColor.darkGrey,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfileSettings(),
+                      ),
+                    );
+                  },
+                  child: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 24,
+                    color: AppColor.darkGrey,
+                  ),
                 ),
               ],
             ),

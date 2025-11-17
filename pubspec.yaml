@@ -24,6 +24,7 @@ dependencies:
   hugeicons: ^1.1.1
   flint_client: ^0.0.1+2
   shared_preferences: ^2.5.3
+  iconsax: ^0.0.8
 
 dev_dependencies:
   flutter_test:

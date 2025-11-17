@@ -14,4 +14,11 @@ class AppImages {
   static const String data = "${_imagePath}dataSide.png";
   static const String master = "${_imagePath}masterCard.png";
   static const String profile = "${_imagePath}profile.jpg";
+  static const String settings = "${_imagePath}settings.png";
+  static const String location = "${_imagePath}location.png";
+  static const String credit = "${_imagePath}credit.png";
+  static const String creditcards = "${_imagePath}credit cards.png";
+  static const String chat = "${_imagePath}chat.png";
+  static const String bell = "${_imagePath}Bell.png";
+  static const String singleuser = "${_imagePath}singleuser.png";
 }
