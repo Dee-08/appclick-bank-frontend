@@ -2,6 +2,7 @@ import 'package:bank_app/core/constants/app_color.dart';
 import 'package:bank_app/core/constants/app_images.dart';
 import 'package:bank_app/core/extensions/extensions.dart';
 import 'package:bank_app/provider/tabbar_provider.dart';
+import 'package:bank_app/screens/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:provider/provider.dart';
@@ -103,7 +104,7 @@ class _StatisticsState extends State<Statistics>
                     ),
                   ),
                   30.getHeightWhiteSpacing,
-                  Image(image: AssetImage('assets/images/grap4.png')),
+                  ImageWidget(imagePath: AppImages.graph4),
                 ],
               ),
             ),

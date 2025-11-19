@@ -1,5 +1,3 @@
-import 'package:bank_app/core/constants/app_color.dart';
-import 'package:bank_app/core/constants/app_images.dart';
 import 'package:bank_app/core/constants/constant.dart';
 import 'package:bank_app/core/extensions/extensions.dart';
 import 'package:bank_app/screens/widgets/image_widget.dart';

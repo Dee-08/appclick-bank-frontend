@@ -25,4 +25,5 @@ class AppImages {
   static const String chat = "${_imagePath}chat.png";
   static const String bell = "${_imagePath}Bell.png";
   static const String singleuser = "${_imagePath}singleuser.png";
+  static const String graph4 = "${_imagePath}grap4.png";
 }
