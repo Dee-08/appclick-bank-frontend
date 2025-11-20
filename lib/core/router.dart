@@ -2,6 +2,7 @@ import 'package:bank_app/screens/screens.dart';
 import 'package:bank_app/screens/home.dart';
 import 'package:bank_app/screens/sendmoney.dart';
 import 'package:bank_app/screens/profile_settings.dart';
+import 'package:bank_app/screens/widgets/edit_profile.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -14,5 +15,7 @@ class AppRouter {
     "signup": (BuildContext context) => SignUp(),
     "send": (BuildContext context) => Sendmoney(),
     "profile": (BuildContext context) => ProfileSettings(),
+    "editprofile": (BuildContext context) => EditProfile(),
+    "settings": (BuildContext context) => Settings(),
   };
 }

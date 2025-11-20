@@ -190,9 +190,9 @@ class AuthProvider extends ChangeNotifier {
   void logOut() async {
     await SecureStorage.deleteStoredLogin();
     await SecureStorage.deleteStoredTime();
-
     isLoggedIn = false;
     lastLoginTime = null;
+
 
     notifyListeners();
   }

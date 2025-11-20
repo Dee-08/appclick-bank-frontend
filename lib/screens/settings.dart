@@ -1,6 +1,7 @@
 import 'package:bank_app/core/constants/app_color.dart';
 import 'package:bank_app/core/extensions/num_extension.dart';
 import 'package:bank_app/core/extensions/theme_extensions.dart';
+import 'package:bank_app/provider/auth_provider.dart';
 import 'package:bank_app/provider/settings_provider.dart';
 import 'package:bank_app/screens/log_in.dart';
 import 'package:bank_app/screens/profile_settings.dart';
@@ -14,6 +15,7 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var settingsProvider = Provider.of<SettingsProvider>(context);
+    var authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20),
