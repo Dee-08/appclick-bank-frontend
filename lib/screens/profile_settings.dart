@@ -1,6 +1,7 @@
 import 'package:bank_app/core/constants/app_color.dart';
 import 'package:bank_app/core/constants/app_images.dart';
 import 'package:bank_app/core/extensions/extensions.dart';
+import 'package:bank_app/screens/widgets/edit_profile.dart';
 import 'package:flutter/material.dart';
 
 class ProfileSettings extends StatelessWidget {
@@ -116,10 +117,18 @@ class ProfileSettings extends StatelessWidget {
                     ),
                   ],
                 ),
-                Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: 24,
-                  color: AppColor.darkGrey,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => EditProfile()),
+                    );
+                  },
+                  child: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 24,
+                    color: AppColor.darkGrey,
+                  ),
                 ),
               ],
             ),
