@@ -1,13 +1,16 @@
 import 'package:bank_app/core/constants/app_color.dart';
 import 'package:bank_app/core/constants/app_images.dart';
 import 'package:bank_app/core/extensions/extensions.dart';
+import 'package:bank_app/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileSettings extends StatelessWidget {
   const ProfileSettings({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final auth = context.watch<AuthProvider>();
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -72,7 +75,7 @@ class ProfileSettings extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "David Daniel",
+                            auth.currentUser?.name ?? "",
                             style: context.textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.w500,
                               fontSize: 24,

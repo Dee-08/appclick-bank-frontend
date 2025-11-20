@@ -4,6 +4,7 @@ import 'package:bank_app/core/extensions/theme_extensions.dart';
 import 'package:bank_app/provider/settings_provider.dart';
 import 'package:bank_app/screens/log_in.dart';
 import 'package:bank_app/screens/profile_settings.dart';
+import 'package:bank_app/screens/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,12 +32,12 @@ class Settings extends StatelessWidget {
                     width: 40,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: Color(0xffF4F4F4),
+                      color: AppColor.navColor(context),
                       borderRadius: BorderRadius.circular(100),
                     ),
                     child: Icon(
                       Icons.arrow_back_ios_new_rounded,
-                      color: AppColor.dark,
+                      color: AppColor.textColor(context),
                       size: 18,
                     ),
                   ),
@@ -45,24 +46,27 @@ class Settings extends StatelessWidget {
                   "Settings",
                   style: context.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: AppColor.dark,
+                    color: AppColor.textColor(context),
                   ),
                 ),
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: const Color(0xffF4F4F4),
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LogIn()),
-                      );
-                    },
-                    child: Icon(Icons.logout_rounded, color: AppColor.dark),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LogIn()),
+                    );
+                  },
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: AppColor.navColor(context),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Icon(
+                      Icons.logout_rounded,
+                      color: AppColor.textColor(context),
+                    ),
                   ),
                 ),
               ],
@@ -246,6 +250,20 @@ class Settings extends StatelessWidget {
                     }
                   }),
                 ),
+              ],
+            ),
+            30.getHeightWhiteSpacing,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Theme Mode",
+                  style: context.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                15.getWidthWhiteSpacing,
+                ThemeModeSwitch(),
               ],
             ),
           ],

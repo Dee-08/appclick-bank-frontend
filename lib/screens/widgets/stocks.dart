@@ -10,7 +10,7 @@ class Stocks extends StatelessWidget {
   final String amount;
   final bool isSelected;
   final VoidCallback onTap;
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   const Stocks({
     super.key,
@@ -20,12 +20,12 @@ class Stocks extends StatelessWidget {
     required this.amount,
     required this.isSelected,
     required this.onTap,
-    this.backgroundColor = AppColor.lightGrey,
+    this.backgroundColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: ListTile(
         contentPadding: EdgeInsets.zero,
@@ -34,7 +34,7 @@ class Stocks extends StatelessWidget {
           height: 42,
           width: 42,
           decoration: BoxDecoration(
-            color: backgroundColor,
+            color: AppColor.navColor(context),
             shape: BoxShape.circle,
           ),
           child: ImageWidget(imagePath: imagePath),

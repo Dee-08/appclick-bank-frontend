@@ -16,7 +16,7 @@ class AppIconButton extends StatelessWidget {
     required this.icon,
     this.iconColor = AppColor.iconButtonIconColor,
     this.labelColor = AppColor.iconButtonIconColor,
-    this.backgroundColor = AppColor.lightGrey,
+    this.backgroundColor = AppColor.darkNav,
     required this.onPressed,
   });
 

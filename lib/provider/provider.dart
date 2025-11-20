@@ -1,10 +1,12 @@
 import 'package:bank_app/provider/auth_provider.dart';
 import 'package:bank_app/provider/home_provider.dart';
 import 'package:bank_app/provider/onboarding_provider.dart';
+import 'package:bank_app/provider/recipient_provider.dart';
 import 'package:bank_app/provider/settings_provider.dart';
 import 'package:bank_app/provider/stock_selection_provider.dart';
 import 'package:bank_app/provider/tabbar_provider.dart';
 import 'package:bank_app/provider/theme_provider.dart';
+import 'package:bank_app/provider/wallet_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -17,5 +19,7 @@ class AppProvider {
     ChangeNotifierProvider(create: (_) => SettingsProvider()),
     ChangeNotifierProvider(create: (_) => StockSelectionProvider()),
     ChangeNotifierProvider(create: (_) => TabbarProvider()),
+    ChangeNotifierProvider(create: (_) => RecipientProvider()),
+    ChangeNotifierProvider(create: (_) => WalletProvider(auth: AuthProvider())),
   ];
 }

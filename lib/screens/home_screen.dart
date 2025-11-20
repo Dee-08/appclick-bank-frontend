@@ -1,18 +1,55 @@
 import 'package:bank_app/core/constants/constant.dart';
 import 'package:bank_app/core/extensions/num_extension.dart';
 import 'package:bank_app/core/extensions/theme_extensions.dart';
+import 'package:bank_app/provider/auth_provider.dart';
+import 'package:bank_app/provider/stock_selection_provider.dart';
 import 'package:bank_app/screens/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final stockProvider = context.watch<StockSelectionProvider>();
+    final auth = context.watch<AuthProvider>();
+
+    final transactions = [
+      {
+        "header": "Apple Store",
+        "sub": "Entertainment",
+        "image": AppImages.ios,
+        "amount": "- \$5.99",
+      },
+      {
+        "header": "Spotify",
+        "sub": "Music",
+        "image": AppImages.spotify,
+        "amount": "- \$12.99",
+      },
+      {
+        "header": "Money Transfer",
+        "sub": "Transaction",
+        "image": AppImages.inbound,
+        "amount": "\$300",
+      },
+      {
+        "header": "Grocery",
+        "sub": "Purchase",
+        "image": AppImages.grocery,
+        "amount": "- \$88",
+      },
+      {
+        "header": "Money Transfer",
+        "sub": "Transaction",
+        "image": AppImages.inbound,
+        "amount": "\$300",
+      },
+    ];
     return Scaffold(
       backgroundColor: AppColor.getSplashColor(context),
-
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
@@ -68,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                                 SizedBox(
                                   width: context.screenSize.width,
                                   child: Text(
-                                    "Daniel David",
+                                    auth.currentUser?.name ?? '',
                                     textAlign: TextAlign.start,
                                     style: context.textTheme.bodyMedium
                                         ?.copyWith(
@@ -88,7 +125,7 @@ class HomeScreen extends StatelessWidget {
                       width: 42,
                       height: 42,
                       decoration: BoxDecoration(
-                        color: AppColor.lightGrey,
+                        color: AppColor.navColor(context),
                         borderRadius: BorderRadius.circular(100),
                       ),
                       child: Icon(
@@ -146,7 +183,7 @@ class HomeScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "AR Jonson",
+                                    auth.currentUser?.name ?? "",
                                     style: context.textTheme.bodySmall
                                         ?.copyWith(
                                           color: AppColor.white,
@@ -258,25 +295,33 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppIconButton(
+                    backgroundColor: AppColor.navColor(context),
                     label: "Send",
                     icon: IconsaxPlusLinear.arrow_up,
+                    iconColor: AppColor.textColor(context),
                     onPressed: () {
-                      Navigator.pushNamed(context, "sendmoney");
+                      Navigator.pushNamed(context, "send");
                     },
                   ),
                   AppIconButton(
+                    backgroundColor: AppColor.navColor(context),
                     label: "Receive",
                     icon: IconsaxPlusLinear.arrow_down_1,
+                    iconColor: AppColor.textColor(context),
                     onPressed: () {},
                   ),
                   AppIconButton(
+                    backgroundColor: AppColor.navColor(context),
                     label: "Loan",
                     icon: IconsaxPlusLinear.dollar_circle,
+                    iconColor: AppColor.textColor(context),
                     onPressed: () {},
                   ),
                   AppIconButton(
+                    backgroundColor: AppColor.navColor(context),
                     label: "Topup",
                     icon: IconsaxPlusLinear.cloud_add,
+                    iconColor: AppColor.textColor(context),
                     onPressed: () {},
                   ),
                 ],
@@ -300,6 +345,21 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              15.getHeightWhiteSpacing,
+              Column(
+                children: List.generate(transactions.length, (index) {
+                  final t = transactions[index];
+
+                  return Stocks(
+                    imagePath: t["image"]!,
+                    header: t["header"]!,
+                    subHeader: t["sub"]!,
+                    amount: t["amount"]!,
+                    isSelected: stockProvider.selectedIndex == index,
+                    onTap: () => stockProvider.selectIndex(index),
+                  );
+                }),
               ),
             ],
           ),
