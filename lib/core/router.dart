@@ -13,6 +13,8 @@ class AppRouter {
     "login": (BuildContext context) => LogIn(),
     "onboarding": (BuildContext context) => Onboarding(),
     "signup": (BuildContext context) => SignUp(),
+    "send": (BuildContext context) => Sendmoney(),
+    "profile": (BuildContext context) => ProfileSettings(),
     "editprofile": (BuildContext context) => EditProfile(),
     "settings": (BuildContext context) => Settings(),
   };

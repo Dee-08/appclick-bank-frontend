@@ -9,24 +9,23 @@ class ThemeModeSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Provider.of<ThemeProvider>(
-          context,
-          listen: false,
-        ).changeMode(!context.isDark);
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
+    return Switch(
+      value: context.isDark, // or themeProvider.isDarkMode
+      onChanged: (value) {
+        themeProvider.changeMode(value);
       },
-      child: Container(
-        width: 42,
-        height: 42,
-        padding: EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(),
-          color: AppColor.primary,
-        ),
-        child: Icon(Icons.light_mode, color: Colors.white),
-      ),
+      thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
+        return AppColor.white;
+      }),
+      trackColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColor.darkNav; // Dark mode ON
+        } else {
+          return AppColor.primary.withValues(alpha: 0.5); // Light mode OFF
+        }
+      }),
     );
   }
 }

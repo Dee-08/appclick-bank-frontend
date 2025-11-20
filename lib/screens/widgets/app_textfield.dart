@@ -7,6 +7,7 @@ class AppTextfield extends StatelessWidget {
   final String? Function(String? value)? validator;
   final TextEditingController? controller;
   final InputDecoration? decoration;
+  final TextInputType? keyboardType;
 
   const AppTextfield({
     super.key,
@@ -14,6 +15,7 @@ class AppTextfield extends StatelessWidget {
     this.controller,
     this.validator,
     this.decoration,
+    this.keyboardType,
   });
 
   @override
@@ -43,6 +45,7 @@ class AppTextfield extends StatelessWidget {
             hintText: decoration?.hintText,
             suffixIcon: decoration?.suffixIcon,
           ),
+          keyboardType: keyboardType,
           style: context.textTheme.bodyMedium?.copyWith(
             fontSize: 18,
             color: AppColor.textColor(context),

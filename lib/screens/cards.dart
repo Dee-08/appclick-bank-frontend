@@ -26,7 +26,7 @@ class Cards extends StatelessWidget {
                   width: 42,
                   height: 42,
                   decoration: BoxDecoration(
-                    color: AppColor.lightGrey,
+                    color: AppColor.navColor(context),
                     borderRadius: BorderRadius.circular(100),
                   ),
                   child: Center(
@@ -55,7 +55,7 @@ class Cards extends StatelessWidget {
                   width: 42,
                   height: 42,
                   decoration: BoxDecoration(
-                    color: AppColor.lightGrey,
+                    color: AppColor.navColor(context),
                     borderRadius: BorderRadius.circular(100),
                   ),
                   child: Icon(
@@ -231,7 +231,7 @@ class Cards extends StatelessWidget {
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Color(0xFFF4F4F4),
+                color: AppColor.navColor(context),
 
                 borderRadius: BorderRadius.circular(15),
               ),
